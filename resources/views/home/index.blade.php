@@ -36,4 +36,23 @@
       @endforeach
   </ul>
 </div>
+<script src="http://cdn.staticfile.org/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(document).on('click', '#news-list li', function(){
+  if($(this).hasClass('focus')) {
+    $(this).removeClass('focus');
+  } else {
+    $('#news-list li').removeClass('focus');
+    if($(this).find('.digest').length > 0) {
+      $(this).addClass('focus');
+    }
+  }
+});
+$(document).on('click', '#news-list li a', function(event){
+  event.stopPropagation();
+});
+setInterval(function(){
+  window.location.reload();
+},60000);
+</script>
 </html>
