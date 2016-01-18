@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 class NewsController extends Controller {
   function showList()
    {
-      $newsList = \App\Model\News::get();
+      $newsList = \App\Model\News::orderBy('id','desc')->get();
       foreach($newsList as &$v) {
         $v->source = \App\Model\Source::whereId($v->source)->first();
       }
