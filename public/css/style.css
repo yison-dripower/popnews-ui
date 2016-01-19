@@ -291,8 +291,8 @@ h1 a:hover {
     display: none;
   }
   #news-list li .avatar {
-    height:2.6rem;
-    width:2.6rem;
+    height:2.4rem;
+    width:2.4rem;
     vertical-align: top;
   }
   #news-list .avatar-box {
@@ -302,7 +302,7 @@ h1 a:hover {
     line-height: 1.3;
   }
   #news-list .news-box-wrap {
-    margin-left:3.3rem;
+    margin-left:3.1rem;
   }
   h1 a, h1 a:visited {
     font-size:1.5rem;
