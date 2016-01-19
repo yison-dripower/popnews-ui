@@ -24,10 +24,16 @@
   </div>
   <ul class="list-group">
       @foreach ($newsList as $news)
-    <li class="list-group-item title">
-      <img src="{{$news->source->avatar}}" class="avatar" width="30" height="30" />
-      <a href="{{$news->link}}" target="_blank">{{$news->title}}</a>
-      <span class="date">{{$news->gmt_create}}</span>
+    <li class="list-group-item title fn-clear">
+      <div class="fn-left news-box">
+        <div class="news-box-wrap">
+          <a href="{{$news->link}}" target="_blank">{{$news->title}}</a>
+          <span class="date">{{$news->gmt_create}}</span>
+        </div>
+      </div>
+      <div class="fn-left avatar-box">
+        <img src="{{$news->source->avatar}}" class="avatar" width="30" height="30" />
+      </div>
         @if($news->digest)
       <div class="digest">
         {{$news->digest}}
