@@ -202,3 +202,93 @@ h1 a:hover {
   font-size:16px;
   margin-right:10px;
 }
+
+@media all and (max-width:720px){
+  html,body{
+    font-size: 36px;
+  }
+}
+@media all and (max-width:640px){
+  html,body{
+    font-size: 32px;
+  }
+}
+@media all and (max-width:600px){
+  html,body{
+    font-size: 30px;
+  }
+}
+@media all and (max-width:560px){
+  html,body{
+    font-size: 28px;
+  }
+}
+@media all and (max-width:520px){
+  html,body{
+    font-size: 26px;
+  }
+}
+@media all and (max-width:480px){
+  html,body{
+    font-size: 24px;
+  }
+}
+@media all and (max-width:440px){
+  html,body{
+    font-size: 22px;
+  }
+}
+@media all and (max-width:414px){
+  html,body{
+    font-size: 21px;
+  }
+}
+@media all and (max-width:400px){
+  html,body{
+    font-size: 20px;
+  }
+}
+@media all and (max-width:360px){
+  html,body{
+    font-size: 18px;
+  }
+}
+@media all and (max-width:320px){
+  html,body{
+    font-size: 16px;
+  }
+}
+@media all and (max-width:250px){
+  html,body{
+    font-size: 13px;
+  }
+}
+
+@media all and (max-width:750px){
+  #header,#news-list {
+    width:100%;
+  }
+  #header {
+    padding-top:0;
+    height:4rem;
+    line-height: 4rem;
+  }
+  #news-list {
+    margin-top:0;
+    font-size:0.8rem;
+  }
+  #news-list .date {
+    display: none;
+  }
+  #news-list li .avatar {
+    height:2.8rem;
+    width:2.8rem;
+    vertical-align: top;
+  }
+  h1 a, h1 a:visited {
+    font-size:1.5rem;
+  }
+  .tabs {
+    display: none;
+  }
+}

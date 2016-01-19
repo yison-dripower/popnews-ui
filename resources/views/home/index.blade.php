@@ -3,6 +3,7 @@
 <head>
 <title>Pop News - 想看的都在这</title>
 <meta charset="utf8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <link href="{{ URL::asset('css/base.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 </head>
@@ -11,7 +12,7 @@
   <h1><a href='/'>Pop News</a></h1>
 </div>
 <div id="news-list">
-  <div class="filters fn-clear">
+  <div class="filters tabs fn-clear">
     <a class="selected">所有</a>
     <a>科技</a>
     <a>电影</a>
