@@ -27,7 +27,7 @@
     <li class="list-group-item title fn-clear">
       <div class="fn-left news-box">
         <div class="news-box-wrap">
-          <a href="{{$news->link}}" target="_blank">{{$news->title}}</a>
+          <a href="{{$news->link}}">{{$news->title}}</a>
           <span class="date">{{$news->gmt_create}}</span>
         </div>
       </div>
@@ -58,8 +58,5 @@ $(document).on('click', '#news-list li', function(){
 $(document).on('click', '#news-list li a', function(event){
   event.stopPropagation();
 });
-setInterval(function(){
-  window.location.reload();
-},60000);
 </script>
 </html>
