@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Pop News - 想看的都在这</title>
+<title>想看的都在这</title>
 <meta charset="utf8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <link href="{{ URL::asset('css/base.css') }}" rel="stylesheet">
