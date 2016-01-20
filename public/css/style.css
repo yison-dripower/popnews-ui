@@ -86,7 +86,8 @@ h1 a:hover {
 #news-list .no-hover li:hover {
   background-color: #fff;
 }
-#news-list input[type=text] {
+#news-list input[type=text],
+#news-list input[type=password] {
   border:none;
   font-family: STFangSong, Helvetica, Arial, Vernada, Tahoma, STXihei, "Microsoft YaHei", "Songti SC", SimSun, Heiti, sans-serif;
   width:300px;
@@ -98,7 +99,8 @@ h1 a:hover {
 #news-list input:first-child {
   margin-left:0;
 }
-#news-list input[type=text]:focus {
+#news-list input[type=text]:focus,
+#news-list input[type=password]:focus {
   outline: none;
 }
 #news-list li i {
@@ -208,6 +210,18 @@ h1 a:hover {
   margin-left:-100%;
   width:30px;
 }
+#news-list i {
+  margin-left:-100%;
+}
+#news-list .nick {
+  width:100%;
+}
+#news-list .nick .nick-wrap {
+  margin-left:80px;
+}
+#news-list .nick input {
+  width:100%;
+}
 .add-news-source {
   font-size:16px;
   margin-right:10px;
@@ -277,6 +291,9 @@ h1 a:hover {
 @media all and (max-width:1000px){
   #header,#news-list {
     width:100%;
+  }
+  #news-list.login {
+    width:90%;
   }
   #header {
     padding-top:0;

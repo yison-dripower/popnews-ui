@@ -1,47 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <title>Pop News</title>
-
-
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Pop News</div>
-            </div>
+<head>
+<title>想看的都在这</title>
+<meta charset="utf8" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::asset('icon/apple-touch-icon-144x144.png') }}">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ URL::asset('icon/apple-touch-icon-120x120.png') }}">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::asset('icon/apple-touch-icon-72x72.png') }}">
+<link rel="apple-touch-icon-precomposed" href="{{ URL::asset('icon/apple-touch-icon-57x57.png') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<link href="{{ URL::asset('css/base.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+  <h1><a href='/'>Pop News</a></h1>
+</div>
+<div id="news-list" class="login">
+  <ul class="list-group no-hover">
+    <li class="fn-clear">
+      <div class="nick fn-left">
+        <div class="nick-wrap">
+          <input type="text" />
         </div>
-    </body>
+      </div>
+      <i class="fn-left">昵称：</i>
+    </li>
+    <li class="fn-clear">
+      <div class="nick fn-left">
+        <div class="nick-wrap">
+          <input type="password"  />
+        </div>
+      </div>
+      <i class="fn-left">密码：</i>
+    </li>
+  </ul>
+  <div class="action">
+    <a>登录</a>
+  </div>
+</div>
+<script src="http://cdn.staticfile.org/jquery/1.7.1/jquery.min.js"></script>
+
 </html>

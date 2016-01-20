@@ -31,7 +31,7 @@
     <li class="list-group-item title fn-clear">
       <div class="fn-left news-box">
         <div class="news-box-wrap">
-          <a href="{{$news->link}}">{{$news->title}}</a>
+          <a @if($news->link)href="{{$news->link}}"@endif>{{$news->title}}</a>
           <span class="date">{{$news->gmt_create}}</span>
         </div>
       </div>
