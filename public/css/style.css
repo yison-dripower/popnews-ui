@@ -330,6 +330,9 @@ h1 a:hover {
   #news-list .news-box-wrap {
     margin-left:2.95rem;
   }
+  #news-list dl dd {
+    max-width: 60%;
+  }
   h1 a, h1 a:visited {
     font-size:1.3rem;
   }
