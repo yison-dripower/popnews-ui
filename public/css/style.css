@@ -222,6 +222,15 @@ h1 a:hover {
 #news-list .nick input {
   width:100%;
 }
+#news-list.subscribe .info {
+  width:100%;
+}
+#news-list.subscribe .avatar {
+  margin-left:-100%;
+}
+#news-list.subscribe .info-wrap {
+  margin-left:40px;
+}
 .add-news-source {
   font-size:16px;
   margin-right:10px;

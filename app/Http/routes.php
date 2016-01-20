@@ -39,6 +39,10 @@ Route::post('login-act', [
 Route::get('home', [
   'as' => 'home', 'uses' => 'NewsController@showList'
 ]);
+
+Route::get('subscribe/list', [
+  'as' => 'home', 'uses' => 'NewsController@subscribeList'
+]);
 /*
 |--------------------------------------------------------------------------
 | Application Routes

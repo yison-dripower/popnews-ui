@@ -32,6 +32,14 @@ class NewsController extends Controller {
      }
    }
 
+   function subscribeList() {
+     $this->beforeLogin();
+     $sourceList = \App\Model\Source::orderBy('id','desc')->get();
+     return view('subscribe/list',[
+       'sourceList' => $sourceList
+     ]);
+   }
+
    private function beforeLogin() {
      if(\App\Model\User::check() == false){
        header('Location:login');
