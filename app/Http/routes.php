@@ -12,8 +12,29 @@
 */
 
 Route::get('/', function () {
-  return view('welcome');
+  if(\App\Model\User::check() == false){
+    header('Location:login');
+  } else {
+    header('Location:home');
+  }
+  exit;
 });
+
+Route::get('login', function () {
+  if(\App\Model\User::check()){
+    header('Location:home');
+    exit;
+  }
+  /*App\User::create(array(
+      'name' => 'Popea',
+      'password' => Hash::make('Apparently')
+  ));*/
+  return view('login');
+});
+
+Route::post('login-act', [
+  'as' => 'login-act', 'uses' => 'NewsController@loginAct'
+]);
 
 Route::get('home', [
   'as' => 'home', 'uses' => 'NewsController@showList'
