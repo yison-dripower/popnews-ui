@@ -16,7 +16,7 @@
   <h1><a href='/'>Pop News</a></h1>
 </div>
 <div id="news-list" class="subscribe">
-  <div class="filters">
+  <div class="filters tabs">
     <a class="selected">所有</a>
     <a>已订阅</a>
   </div>

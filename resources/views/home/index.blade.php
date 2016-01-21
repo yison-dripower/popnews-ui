@@ -20,7 +20,7 @@
     <a class="selected">所有</a>
     <a>特别关注</a>
     <a>收藏</a>
-    <a class="fn-right" href="/subscribe/list">+</a>
+    <a class="fn-right plus" href="/subscribe/list">+</a>
   </div>
   <div class="list-hd">
     今日 01-18

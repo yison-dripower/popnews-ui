@@ -244,6 +244,10 @@ h1 a:hover {
 .tabs a.selected {
   color:#000;
 }
+.tabs a.plus,
+.tabs a.plus:visited {
+  color:#000;
+}
 
 @media all and (max-width:720px){
   html,body{
