@@ -14,6 +14,9 @@ a {
   text-decoration: none;
   vertical-align: middle;
 }
+a:hover {
+  text-decoration: none;
+}
 h1 a,
 h1 a:visited {
   font-size:30px;
@@ -234,6 +237,12 @@ h1 a:hover {
 .add-news-source {
   font-size:16px;
   margin-right:10px;
+}
+.tabs a {
+  color:#999;
+}
+.tabs a.selected {
+  color:#000;
 }
 
 @media all and (max-width:720px){
