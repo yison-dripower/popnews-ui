@@ -18,9 +18,8 @@
 <div id="news-list">
   <div class="filters tabs fn-clear">
     <a class="selected">所有</a>
-    <a>科技</a>
-    <a>电影</a>
-    <a>经济</a>
+    <a>特别关注</a>
+    <a>收藏</a>
     <a class="fn-right" href="/subscribe/list">+</a>
   </div>
   <div class="list-hd">
