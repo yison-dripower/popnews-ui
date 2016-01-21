@@ -239,10 +239,10 @@ h1 a:hover {
   margin-right:10px;
 }
 .tabs a {
-  color:#999;
+  color:#333;
 }
 .tabs a.selected {
-  color:#333 !important;
+  color:#999 !important;
 }
 .tabs a.plus,
 .tabs a.plus:visited {
