@@ -41,7 +41,11 @@ Route::get('home', [
 ]);
 
 Route::get('subscribe/list', [
-  'as' => 'home', 'uses' => 'NewsController@subscribeList'
+  'as' => 'subscribe', 'uses' => 'NewsController@subscribeList'
+]);
+
+Route::get('subscribe/add', [
+  'as' => 'subscribe-add', 'uses' => 'NewsController@subscribeAdd'
 ]);
 /*
 |--------------------------------------------------------------------------

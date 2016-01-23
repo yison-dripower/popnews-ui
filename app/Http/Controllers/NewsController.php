@@ -40,6 +40,10 @@ class NewsController extends Controller {
      ]);
    }
 
+   function subscribeAdd() {
+     return view('subscribe/add');
+   }
+
    private function beforeLogin() {
      if(\App\Model\User::check() == false){
        header('Location:login');
