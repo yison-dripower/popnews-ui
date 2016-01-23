@@ -16,11 +16,9 @@
   <h1><a href='/'>Pop News</a></h1>
 </div>
 <div id="news-list" class="subscribe">
-  <div class="filters">
+  <div class="filters tabs">
     <a class="selected">所有</a>
-    <a>科技</a>
-    <a>电影</a>
-    <a>经济</a>
+    <a>已订阅</a>
   </div>
   <div class="list-hd fn-clear">
     消息源订阅
