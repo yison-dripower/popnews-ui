@@ -39,20 +39,11 @@
     <li class="fn-clear">
       <div class="fn-left group-field">
         <div class="field-wrap">
-          <input type="checkbox" /> 特别关注
-          <input type="checkbox" /> 推送
-        </div>
-      </div>
-      <i>权重：</i>
-    </li>
-    <li class="fn-clear">
-      <div class="fn-left group-field">
-        <div class="field-wrap">
           <input type="radio" name="frequency" /> 10分钟
           <input type="radio" name="frequency" /> 30分钟
-          <input type="radio" name="frequency" checked="checked" /> 1小时
+          <input type="radio" name="frequency" /> 1小时
           <input type="radio" name="frequency" /> 3小时
-          <input type="radio" name="frequency" /> 6小时
+          <input type="radio" name="frequency" checked="checked" /> 6小时
           <input type="radio" name="frequency" /> 12小时
           <input type="radio" name="frequency" /> 1天
         </div>

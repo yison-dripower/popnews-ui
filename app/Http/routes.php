@@ -47,6 +47,10 @@ Route::get('subscribe/list', [
 Route::get('subscribe/add', [
   'as' => 'subscribe-add', 'uses' => 'NewsController@subscribeAdd'
 ]);
+
+Route::get('subscribe/test', [
+  'as' => 'subscribe-test', 'uses' => 'NewsController@subscribeTest'
+]);
 /*
 |--------------------------------------------------------------------------
 | Application Routes

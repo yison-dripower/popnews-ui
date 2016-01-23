@@ -41,7 +41,13 @@ class NewsController extends Controller {
    }
 
    function subscribeAdd() {
+     $output = shell_exec('ls -lart');
      return view('subscribe/add');
+   }
+
+   function subscribeTest() {
+     $output = shell_exec('node ~/Dev/test/aa.js');
+     print_r($output);
    }
 
    private function beforeLogin() {
