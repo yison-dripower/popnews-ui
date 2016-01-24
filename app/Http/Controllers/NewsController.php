@@ -34,6 +34,8 @@ class NewsController extends Controller {
 
    function subscribeList() {
      $this->beforeLogin();
+     $subscribes = \App\Model\Subscribe::whereUser($_SESSION['user']['name'])
+       ->whereStatus(0)->get();
      $sourceList = \App\Model\Source::orderBy('id','desc')->get();
      return view('subscribe/list',[
        'sourceList' => $sourceList
