@@ -74,7 +74,7 @@
       <li>
         <select name="">
             @foreach ($ruleList as $rule)
-          <option value="{{$rule->toJson()}}">{{$rule->name}}</option>
+          <option value="{{$rule->toJson()}}" @if ($rule->id == 2) selected @endif>{{$rule->name}}</option>
             @endforeach
         </select>
       </li>
