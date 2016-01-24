@@ -88,7 +88,7 @@ class NewsController extends Controller {
      $news = $_POST['news'];
      $title = $_POST['title'];
      $link = $_POST['link'];
-     $output = shell_exec("node ../../../../../root/phantom/aa.js '".$url."' '".$news."' '".$title."' '".$link."'");
+     $output = shell_exec("node ../../../../../root/project/phantom/aa.js '".$url."' '".$news."' '".$title."' '".$link."'");
      print_r($output);
    }
 
