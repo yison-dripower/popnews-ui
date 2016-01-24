@@ -48,8 +48,12 @@ Route::get('subscribe/add', [
   'as' => 'subscribe-add', 'uses' => 'NewsController@subscribeAdd'
 ]);
 
-Route::get('subscribe/test', [
+Route::post('subscribe/test', [
   'as' => 'subscribe-test', 'uses' => 'NewsController@subscribeTest'
+]);
+
+Route::post('subscribe/addAct', [
+  'as' => 'subscribe-add-act', 'uses' => 'NewsController@subscribeAddAct'
 ]);
 /*
 |--------------------------------------------------------------------------

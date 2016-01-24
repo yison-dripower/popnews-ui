@@ -41,12 +41,53 @@ class NewsController extends Controller {
    }
 
    function subscribeAdd() {
-     $output = shell_exec('ls -lart');
-     return view('subscribe/add');
+     $ruleList = \App\Model\Rule::orderBy('id','desc')->get();
+     return view('subscribe/add',[
+       'ruleList' => $ruleList
+     ]);
+   }
+
+   function subscribeAddAct() {
+     $data = $_POST;
+     $template = json_decode($data['template'], true);
+     if($data['mode'] == 'add') {
+       $rule = new \App\Model\Rule();
+       $rule->name = $template['name'];
+       $rule->news = $template['news'];
+       $rule->title = $template['title'];
+       $rule->link = $template['link'];
+       $rule->author = $_SESSION['user']['name'];
+       if($template['digest']!='') {
+         $rule->digest = $template['digest'];
+       }
+       $rule->save();
+       $ruleId = $rule->id;
+     } else {
+       $ruleId = $template['id'];
+     }
+     $source = new \App\Model\Source();
+     $source->name = $data['name'];
+     if($data['description'] != '') {
+       $source->description = $data['description'];
+     }
+     $source->url = $data['url'];
+     $source->frequency = $data['frequency'];
+     $source->rule = $ruleId;
+     $source->avatar = $data['avatar'];
+     $source->author = $_SESSION['user']['name'];
+     if($source->save()) {
+       echo 'success';
+     } else {
+       echo 'failure';
+     }
    }
 
    function subscribeTest() {
-     $output = shell_exec('node ~/Dev/test/aa.js');
+     $url = $_POST['url'];
+     $news = $_POST['news'];
+     $title = $_POST['title'];
+     $link = $_POST['link'];
+     $output = shell_exec("node ~/project/phantom/aa.js '".$url."' '".$news."' '".$title."' '".$link."'");
      print_r($output);
    }
 
