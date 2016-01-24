@@ -83,6 +83,7 @@ class NewsController extends Controller {
    }
 
    function subscribeTest() {
+     set_time_limit(0);
      $url = $_POST['url'];
      $news = $_POST['news'];
      $title = $_POST['title'];
