@@ -11,7 +11,8 @@ class NewsController extends Controller {
   function showList()
    {
       $this->beforeLogin();
-      $newsList = \App\Model\News::orderBy('id','desc')->get();
+      $yesterday = date('Y-m-d', strtotime('-1 day'));
+      $newsList = \App\Model\News::where('gmt_create','>',$yesterday)->orderBy('id','desc')->get();
       foreach($newsList as &$v) {
         $v->source = \App\Model\Source::whereId($v->source)->first();
       }
