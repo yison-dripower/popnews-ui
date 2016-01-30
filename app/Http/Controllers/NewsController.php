@@ -11,13 +11,19 @@ class NewsController extends Controller {
   function showList()
    {
       $this->beforeLogin();
+      $today = date('Y-m-d');
       $yesterday = date('Y-m-d', strtotime('-1 day'));
-      $newsList = \App\Model\News::where('gmt_create','>',$yesterday)->orderBy('id','desc')->get();
+      $newsListOfToday = \App\Model\News::where('gmt_create','>',$today)->orderBy('id','desc')->get();
       foreach($newsList as &$v) {
         $v->source = \App\Model\Source::whereId($v->source)->first();
       }
+      $newsListOfYesterday = \App\Model\News::where('gmt_create','>',$yesterday)
+        where('gmt_create','<',$today)->orderBy('id','desc')->get();
       return view('home/index', [
-        'newsList'=> $newsList
+        'newsListOfToday'=> $newsListOfToday,
+        'newsListOfYesterday'=> $newsListOfYesterday,
+        'today'=> date('m-d'),
+        'yesterday'=> date('m-d', strtotime('-1 day'))
       ]);
    }
 

@@ -23,10 +23,33 @@
     <a class="fn-right plus" href="/subscribe/list">+</a>
   </div>
   <div class="list-hd">
-    今日 01-18
+    今日 {{$today}}
   </div>
   <ul class="list-group">
-      @foreach ($newsList as $news)
+      @foreach ($newsListOfToday as $news)
+    <li class="list-group-item title fn-clear">
+      <div class="fn-left news-box">
+        <div class="news-box-wrap">
+          <a @if($news->link)href="{{$news->link}}"@endif>{{$news->title}}</a>
+          <span class="date">{{$news->gmt_create}}</span>
+        </div>
+      </div>
+      <div class="fn-left avatar-box">
+        <img src="{{$news->source->avatar}}" class="avatar" width="30" height="30" />
+      </div>
+        @if($news->digest)
+      <div class="digest">
+        {{$news->digest}}
+      </div>
+        @endif
+    </li>
+      @endforeach
+  </ul>
+  <div class="list-hd">
+    昨日 {{$today}}
+  </div>
+  <ul class="list-group">
+      @foreach ($newsListOfYesterday as $news)
     <li class="list-group-item title fn-clear">
       <div class="fn-left news-box">
         <div class="news-box-wrap">
