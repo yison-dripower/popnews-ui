@@ -46,7 +46,7 @@
       @endforeach
   </ul>
   <div class="list-hd">
-    昨日 {{$today}}
+    昨日 {{$yesterday}}
   </div>
   <ul class="list-group">
       @foreach ($newsListOfYesterday as $news)
