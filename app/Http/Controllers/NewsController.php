@@ -14,11 +14,14 @@ class NewsController extends Controller {
       $today = date('Y-m-d');
       $yesterday = date('Y-m-d', strtotime('-1 day'));
       $newsListOfToday = \App\Model\News::where('gmt_create','>',$today)->orderBy('id','desc')->get();
-      foreach($newsList as &$v) {
+      foreach($newsListOfToday as &$v) {
         $v->source = \App\Model\Source::whereId($v->source)->first();
       }
       $newsListOfYesterday = \App\Model\News::where('gmt_create','>',$yesterday)->
         where('gmt_create','<',$today)->orderBy('id','desc')->get();
+      foreach($newsListOfYesterday as &$v) {
+        $v->source = \App\Model\Source::whereId($v->source)->first();
+      }
       return view('home/index', [
         'newsListOfToday'=> $newsListOfToday,
         'newsListOfYesterday'=> $newsListOfYesterday,
