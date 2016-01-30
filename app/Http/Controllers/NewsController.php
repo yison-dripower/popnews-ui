@@ -98,9 +98,9 @@ class NewsController extends Controller {
    function log() {
      set_time_limit(0);
      if(isset($_GET['f']) && $_GET['f'] == 'err') {
-       $output = shell_exec("cat ~/aa/err.log");
+       $output = shell_exec("cat /var/www/html/popnews-ui/aa/err.log");
      } else {
-       $output = shell_exec("cat ~/aa/out.log");
+       $output = shell_exec("cat /var/www/html/popnews-ui/aa/out.log");
      }
      echo "<pre>$output</pre>";
    }
