@@ -95,6 +95,12 @@ class NewsController extends Controller {
      print_r($output);
    }
 
+   function log() {
+     set_time_limit(0);
+     $output = shell_exec("cat ~/project/phantom/out.log");
+     print_r($output);
+   }
+
    private function beforeLogin() {
      if(\App\Model\User::check() == false){
        header('Location:login');
