@@ -17,7 +17,7 @@ class NewsController extends Controller {
       foreach($newsList as &$v) {
         $v->source = \App\Model\Source::whereId($v->source)->first();
       }
-      $newsListOfYesterday = \App\Model\News::where('gmt_create','>',$yesterday)
+      $newsListOfYesterday = \App\Model\News::where('gmt_create','>',$yesterday)->
         where('gmt_create','<',$today)->orderBy('id','desc')->get();
       return view('home/index', [
         'newsListOfToday'=> $newsListOfToday,
