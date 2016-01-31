@@ -13,12 +13,22 @@ class NewsController extends Controller {
       $this->beforeLogin();
       $today = date('Y-m-d');
       $yesterday = date('Y-m-d', strtotime('-1 day'));
-      $newsListOfToday = \App\Model\News::where('gmt_create','>',$today)->orderBy('id','desc')->get();
+      $user = $_SESSION['user']['name'];
+      $subscribes = \App\Model\Subscribe::whereUser($user)
+        ->whereStatus(0)->get();
+
+      $subscribeIds = [];
+      foreach($subscribes as $v) {
+        $subscribeIds[] = $v->source;
+      }
+
+      $newsListOfToday = \App\Model\News::where('gmt_create','>',$today)
+        ->whereIn('source', $subscribeIds)->orderBy('id','desc')->get();
       foreach($newsListOfToday as &$v) {
         $v->source = \App\Model\Source::whereId($v->source)->first();
       }
-      $newsListOfYesterday = \App\Model\News::where('gmt_create','>',$yesterday)->
-        where('gmt_create','<',$today)->orderBy('id','desc')->get();
+      $newsListOfYesterday = \App\Model\News::where('gmt_create','>',$yesterday)
+        ->whereIn('source', $subscribeIds)->where('gmt_create','<',$today)->orderBy('id','desc')->get();
       foreach($newsListOfYesterday as &$v) {
         $v->source = \App\Model\Source::whereId($v->source)->first();
       }
