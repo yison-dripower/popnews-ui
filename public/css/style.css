@@ -258,6 +258,9 @@ h1 a:hover {
 .mode a.selected {
   color:#333;
 }
+.yesterday {
+  margin-top:10px;
+}
 
 @media all and (max-width:720px){
   html,body{

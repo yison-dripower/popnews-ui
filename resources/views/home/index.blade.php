@@ -45,7 +45,7 @@
     </li>
       @endforeach
   </ul>
-  <div class="list-hd">
+  <div class="list-hd yesterday">
     昨日 {{$yesterday}}
   </div>
   <ul class="list-group">
