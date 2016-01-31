@@ -32,7 +32,7 @@
           <dt>{{$source->name}}</dt>
           <dd>{{$source->description}} <em>{{$source->author}}</em></dd>
           <div class="fn-right">
-            <span class="switch"></span>
+            <span data-id="{{$source->id}}" class="switch @if ($source->isSubscribed($sourceIds)) on @endif"></span>
           </div>
         </div>
       </div>
@@ -57,6 +57,29 @@ $(document).on('click', '#news-list li', function(){
 });
 $(document).on('click', '#news-list li a', function(event){
   event.stopPropagation();
+});
+var switchToken = true;
+$(document).on('click', '.switch', function() {
+  var _this = $(this);
+  var on = $(this).hasClass('on');
+  var id = $(this).data('id');
+  if(! switchToken) {
+    return ;
+  }
+  switchToken = false ;
+  $.post('/subscribe-act', {
+    id: id,
+    on: on ? 0 : 1
+  }, function(data) {
+    if(data == 'success') {
+      on ? _this.removeClass('on')
+         : _this.addClass('on');
+    } else {
+      alert('操作失败，请重试');
+    }
+  }).done(function(){
+    switchToken = true ;
+  });
 });
 </script>
 </html>

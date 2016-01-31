@@ -9,4 +9,12 @@ class Source extends Model
 
     const CREATED_AT = 'gmt_create';
     const UPDATED_AT = 'gmt_modified';
+
+    function isSubscribed($sourceIds) {
+      if(in_array($this->id, $sourceIds)) {
+        return true ;
+      } else {
+        return false ;
+      }
+    }
 }

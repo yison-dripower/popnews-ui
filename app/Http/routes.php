@@ -56,6 +56,10 @@ Route::post('subscribe/addAct', [
   'as' => 'subscribe-add-act', 'uses' => 'NewsController@subscribeAddAct'
 ]);
 
+Route::post('subscribe-act', [
+  'as' => 'subscribe-act', 'uses' => 'NewsController@subscribeAct'
+]);
+
 Route::get('log', [
   'as' => 'log', 'uses' => 'NewsController@log'
 ]);

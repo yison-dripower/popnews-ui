@@ -46,9 +46,14 @@ class NewsController extends Controller {
      $this->beforeLogin();
      $subscribes = \App\Model\Subscribe::whereUser($_SESSION['user']['name'])
        ->whereStatus(0)->get();
+     $sourceIds = [];
+     foreach($subscribes as $v) {
+       $sourceIds[] = $v->source ;
+     }
      $sourceList = \App\Model\Source::orderBy('id','desc')->get();
      return view('subscribe/list',[
-       'sourceList' => $sourceList
+       'sourceList' => $sourceList,
+       'sourceIds' => $sourceIds
      ]);
    }
 
@@ -57,6 +62,29 @@ class NewsController extends Controller {
      return view('subscribe/add',[
        'ruleList' => $ruleList
      ]);
+   }
+
+   function subscribeAct() {
+     $id = $_POST['id'];
+     $status = $_POST['on'] == 1 ? 0 : -1;
+     $user = $_SESSION['user']['name'];
+     if(empty($user)) {
+       echo "failure";
+       exit;
+     }
+     $subscribe = \App\Model\Subscribe::whereSource($id)
+        ->whereUser($user)->first();
+     if(empty($subscribe)) {
+       $subscribe = new \App\Model\Subscribe;
+     }
+     $subscribe->user = $user;
+     $subscribe->source = $id;
+     $subscribe->status = $status;
+     if($subscribe->save()) {
+       echo 'success';
+     } else {
+       echo 'failure';
+     }
    }
 
    function subscribeAddAct() {
