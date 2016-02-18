@@ -61,5 +61,10 @@ $(document).on('click', '#news-list li', function(){
 $(document).on('click', '#news-list li a', function(event){
   event.stopPropagation();
 });
+if(window.navigator.userAgent.indexOf("Chrome") !== -1 ) {
+  setTimeout(function(){
+    window.location.reload();
+  }, 600000);
+}
 </script>
 </html>
