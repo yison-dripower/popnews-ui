@@ -41,7 +41,31 @@ Route::get('home', [
 ]);
 
 Route::get('subscribe/list', [
-  'as' => 'home', 'uses' => 'NewsController@subscribeList'
+  'as' => 'subscribe', 'uses' => 'NewsController@subscribeList'
+]);
+
+Route::get('subscribe/add', [
+  'as' => 'subscribe-add', 'uses' => 'NewsController@subscribeAdd'
+]);
+
+Route::get('special-site', [
+  'as' => 'special-site', 'uses' => 'NewsController@specialSite'
+]);
+
+Route::post('subscribe/test', [
+  'as' => 'subscribe-test', 'uses' => 'NewsController@subscribeTest'
+]);
+
+Route::post('subscribe/addAct', [
+  'as' => 'subscribe-add-act', 'uses' => 'NewsController@subscribeAddAct'
+]);
+
+Route::post('subscribe-act', [
+  'as' => 'subscribe-act', 'uses' => 'NewsController@subscribeAct'
+]);
+
+Route::get('log', [
+  'as' => 'log', 'uses' => 'NewsController@log'
 ]);
 /*
 |--------------------------------------------------------------------------

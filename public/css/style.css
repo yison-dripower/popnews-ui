@@ -93,7 +93,7 @@ h1 a:hover {
 #news-list input[type=password] {
   border:none;
   font-family: STFangSong, Helvetica, Arial, Vernada, Tahoma, STXihei, "Microsoft YaHei", "Songti SC", SimSun, Heiti, sans-serif;
-  width:300px;
+  width:100%;
 }
 #news-list input {
   vertical-align: middle;
@@ -235,6 +235,12 @@ h1 a:hover {
 #news-list.subscribe .info-wrap {
   margin-left:40px;
 }
+#news-list .group-field {
+  width:100%;
+}
+#news-list .group-field .field-wrap {
+  margin-left:70px;
+}
 .add-news-source {
   font-size:16px;
   margin-right:10px;
@@ -248,6 +254,12 @@ h1 a:hover {
 .tabs a.plus,
 .tabs a.plus:visited {
   color:#333;
+}
+.mode a.selected {
+  color:#333;
+}
+.yesterday {
+  margin-top:10px;
 }
 
 @media all and (max-width:720px){
