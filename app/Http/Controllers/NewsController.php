@@ -158,9 +158,8 @@ class NewsController extends Controller {
      set_time_limit(0);
      $mode = $_GET['site'];
      switch($mode) {
-       case self::SITE_36KR => {
+       case self::SITE_36KR :
          $data = $this->get36krDate();
-       }
        default:;
      }
      return view('home/special', [
