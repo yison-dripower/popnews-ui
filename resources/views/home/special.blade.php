@@ -8,9 +8,9 @@
 <ul>
   @foreach ($renders as $news)
 <dl>
-  <dt>{{$news->title}}</dt>
-  <dd class="digest">{{$news->digest}}</dd>
-  <dd class="link"><a href="{{$news->link}}">阅读原文</a></dd>
+  <dt>{{$news['title']}}</dt>
+  <dd class="digest">{{$news['digest']}}</dd>
+  <dd class="link"><a href="{{$news['link']}}">阅读原文</a></dd>
 </dl>
   @endforeach
 </ul>
