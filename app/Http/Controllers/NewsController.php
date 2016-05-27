@@ -163,7 +163,7 @@ class NewsController extends Controller {
        default:;
      }
      return view('home/special', [
-       'renders'=> $renders
+       'renders'=> $data
      ]);
    }
 
@@ -179,11 +179,11 @@ class NewsController extends Controller {
      $data = file_get_contents($url);
      $r = json_decode($data, true);
      $renders = [];
-     foreach($r as $v) {
+     foreach($r['data']['newsflashes'] as $v) {
        $item['title'] = $v['hash_title'];
        $item['digest'] = $v['description_text'];
        $item['link'] = $v['news_url'];
-       $renders[] = $item;
+       $renders[] = $r;
      }
      return $renders;
    }
