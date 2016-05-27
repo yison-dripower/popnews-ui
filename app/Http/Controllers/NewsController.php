@@ -183,7 +183,7 @@ class NewsController extends Controller {
        $item['title'] = $v['hash_title'];
        $item['digest'] = $v['description_text'];
        $item['link'] = $v['news_url'];
-       $renders[] = $r;
+       $renders[] = $item;
      }
      return $renders;
    }
