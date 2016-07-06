@@ -179,9 +179,9 @@ class NewsController extends Controller {
      $data = file_get_contents($url);
      $r = json_decode($data, true);
      $renders = [];
-     foreach($r['data']['newsflashes'] as $v) {
-       $item['title'] = $v['hash_title'];
-       $item['digest'] = $v['description_text'];
+     foreach($r['props']['newsflashList|newsflash'] as $v) {
+       $item['title'] = $v['title'];
+       $item['digest'] = $v['description'];
        $item['link'] = $v['news_url'];
        $renders[] = $item;
      }
