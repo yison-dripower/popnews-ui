@@ -162,7 +162,7 @@ class NewsController extends Controller {
      switch($mode) {
        case self::SITE_36KR :
          $data = $this->get36krDate();
-       case self::TWITTER =>
+       case self::TWITTER :
          $selectors = [
            'url'=> self::TWITTER_DOMAIN + $_GET['suffix'],
            'title'=> '.stream-item',
