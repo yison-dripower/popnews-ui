@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class NewsController extends Controller {
 
   const SITE_36KR = '36kr';
-  case TWITTER = 'twitter';
+  const TWITTER = 'twitter';
   const TWITTER_DOMAIN = 'https://twitter.com'
 
   function showList()
