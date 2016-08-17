@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller {
 
-  const SITE_36KR = "36kr";
+  const SITE_36KR = '36kr';
+  const TWITTER_DOMAIN = 'https://twitter.com'
 
   function showList()
    {
@@ -160,12 +161,20 @@ class NewsController extends Controller {
      switch($mode) {
        case self::SITE_36KR :
          $data = $this->get36krDate();
+       case self::TWITTER =>
+         $selectors = [
+           'url'=> self::TWITTER_DOMAIN + $_GET['suffix'],
+           'title'=> '.stream-item',
+           'link' => '.tweet-timestamp'
+         ];
+         $data = $this->getWithPHPQuery($selectors);
        default:;
      }
      return view('home/special', [
        'renders'=> $data
      ]);
    }
+
 
    private function beforeLogin() {
      if(\App\Model\User::check() == false){
@@ -186,5 +195,29 @@ class NewsController extends Controller {
        $renders[] = $item;
      }
      return $renders;
+   }
+
+   private function getWithPHPQuery($selectors) {
+     require('phpQuery/phpQuery.php');
+     $content = file_get_contents($selectors['url']);
+     $doc = phpQuery::newDocumentHTML($content);
+     phpQuery::selectDocument($doc);
+     $renders = [];
+     $items = pq($selectors['item']);
+     $items->each(function($t) {
+       if($selectors['link'] == '.') {
+         $item['title'] = pq($t)->text();
+       } else {
+         $item['title'] = pq($t)->find($selectors['title'])->text();
+       }
+       if($selectors['link'] == '.') {
+         $item['link'] = pg($t)->getAttribute('href');
+       } else {
+         $item['link'] = pg($t)->find($selectors['link'])->getAttribute('href');
+       }
+       $item['digest'] = pg($t)->find($selectors['description'])->text();
+       $renders[] = $item;
+     });
+     return $renders ;
    }
 }
