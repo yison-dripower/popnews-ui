@@ -164,7 +164,7 @@ class NewsController extends Controller {
          $data = $this->get36krDate();
        case self::TWITTER :
          $selectors = [
-           'url'=> self::TWITTER_DOMAIN + $_GET['suffix'],
+           'url'=> self::TWITTER_DOMAIN.$_GET['suffix'],
            'title'=> '.stream-item',
            'link' => '.tweet-timestamp'
          ];
