@@ -10,7 +10,7 @@ class NewsController extends Controller {
 
   const SITE_36KR = '36kr';
   const TWITTER = 'twitter';
-  const TWITTER_DOMAIN = 'https://twitter.com'
+  const TWITTER_DOMAIN = 'https://twitter.com';
 
   function showList()
    {
