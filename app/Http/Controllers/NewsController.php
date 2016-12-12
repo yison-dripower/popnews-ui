@@ -52,7 +52,7 @@ class NewsController extends Controller {
         $subscribeIds[] = $v->source;
       }
 
-      if ($cat === 'podcast') {
+      if ($cat !== 'podcast') {
         $newsListOfToday = \App\Model\News::where('gmt_create','>',$today)
           ->whereIn('source', $subscribeIds)->orderBy('id','desc')->get();
         foreach($newsListOfToday as &$v) {
