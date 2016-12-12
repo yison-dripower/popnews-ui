@@ -10,6 +10,7 @@ class NewsController extends Controller {
 
   const SITE_36KR = '36kr';
   const TWITTER = 'twitter';
+  const PODCAST = 'podcast';
   const TWITTER_DOMAIN = 'https://twitter.com';
 
   function showList()
@@ -188,7 +189,10 @@ class NewsController extends Controller {
      switch($mode) {
        case self::SITE_36KR :
          $data = $this->get36krDate();
-         break;
+         break ;
+       case self::PODCAST :
+         $data = $this->getPodCast();
+         break ;
        case self::TWITTER :
          $selectors = [
            'url'=> self::TWITTER_DOMAIN.$_GET['suffix'],
@@ -196,6 +200,7 @@ class NewsController extends Controller {
            'link' => '.tweet-timestamp'
          ];
          $data = $this->getWithPHPQuery($selectors);
+         break ;
        default:;
      }
      return view('home/special', [
@@ -221,6 +226,19 @@ class NewsController extends Controller {
        $item['digest'] = $v['description'];
        $item['link'] = $v['news_url'];
        $renders[] = $item;
+     }
+     return $renders;
+   }
+
+   private function getPodCast() {
+     $source = $_GET['source'];
+     $rss = simplexml_load_file(urldecode($source));
+     $renders = [];
+     foreach($rss->channel->item as $item) {
+       $i['title'] = $item->title;
+       $i['digest'] = $item->description;
+       $i['link'] = $item->enclosure['url'];
+       $renders[] = $i;
      }
      return $renders;
    }
