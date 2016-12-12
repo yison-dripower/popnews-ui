@@ -28,7 +28,7 @@ class NewsController extends Controller {
       $sbsNotInIds = [];
       $sbsInIds = [];
       if ($cat === 'less') {
-        $sbs = \App\Model\Source::where('frequency', '>', 359)->get();
+        $sbs = \App\Model\Source::where('frequency', '<', 360)->get();
         foreach($sbs as $v) {
           $sbsNotInIds[] = $v->id;
         }
@@ -52,19 +52,31 @@ class NewsController extends Controller {
         $subscribeIds[] = $v->source;
       }
 
-      $newsListOfToday = \App\Model\News::where('gmt_create','>',$today)
-        ->whereIn('source', $subscribeIds)->orderBy('id','desc')->get();
-      foreach($newsListOfToday as &$v) {
-        $v->source = \App\Model\Source::whereId($v->source)->first();
+      if ($cat === 'podcast') {
+        $newsListOfToday = \App\Model\News::where('gmt_create','>',$today)
+          ->whereIn('source', $subscribeIds)->orderBy('id','desc')->get();
+        foreach($newsListOfToday as &$v) {
+          $v->source = \App\Model\Source::whereId($v->source)->first();
+        }
+        $newsListOfYesterday = \App\Model\News::where('gmt_create','>',$yesterday)
+          ->whereIn('source', $subscribeIds)->where('gmt_create','<',$today)->orderBy('id','desc')->get();
+        foreach($newsListOfYesterday as &$v) {
+          $v->source = \App\Model\Source::whereId($v->source)->first();
+        }
+        $podcastList = [];
+      } else {
+        $newsListOfToday = [];
+        $newsListOfYesterday = [];
+        $podcastList = \App\Model\News::whereIn('source', $subscribeIds)->orderBy('id','desc')->limit(0)->offset(20)->get();
+        foreach($podcastList as &$v) {
+          $v->source = \App\Model\Source::whereId($v->source)->first();
+        }
       }
-      $newsListOfYesterday = \App\Model\News::where('gmt_create','>',$yesterday)
-        ->whereIn('source', $subscribeIds)->where('gmt_create','<',$today)->orderBy('id','desc')->get();
-      foreach($newsListOfYesterday as &$v) {
-        $v->source = \App\Model\Source::whereId($v->source)->first();
-      }
+
       return view('home/index', [
         'newsListOfToday'=> $newsListOfToday,
         'newsListOfYesterday'=> $newsListOfYesterday,
+        'podcastList'=> $podcastList,
         'today'=> date('m-d'),
         'yesterday'=> date('m-d', strtotime('-1 day')),
         'cat' => $cat

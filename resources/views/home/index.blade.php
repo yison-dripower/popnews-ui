@@ -22,9 +22,11 @@
     <a @if($cat == 'podcast')class="selected"@endif href="/home?cat=podcast">播客</a>
     <a class="fn-right plus" href="/subscribe/list">+</a>
   </div>
+    @if ($cat !== 'podcast')
   <div class="list-hd">
     今日 {{$today}}
   </div>
+    @endif
   <ul class="list-group">
       @foreach ($newsListOfToday as $news)
     <li class="list-group-item title fn-clear">
@@ -45,9 +47,11 @@
     </li>
       @endforeach
   </ul>
+    @if ($cat !== 'podcast')
   <div class="list-hd yesterday">
     昨日 {{$yesterday}}
   </div>
+    @endif
   <ul class="list-group">
       @foreach ($newsListOfYesterday as $news)
     <li class="list-group-item title fn-clear">
