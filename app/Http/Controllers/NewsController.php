@@ -67,14 +67,14 @@ class NewsController extends Controller {
       } else {
         $newsListOfToday = [];
         $newsListOfYesterday = [];
-        $podcastList = \App\Model\News::whereIn('source', $subscribeIds)->orderBy('id','desc')->limit(0)->offset(20)->get();
-        foreach($podcastList as &$v) {
+        $newsListOfToday = \App\Model\News::whereIn('source', $subscribeIds)->orderBy('id','desc')->limit(0)->offset(20)->get();
+        foreach($newsListOfToday as &$v) {
           $v->source = \App\Model\Source::whereId($v->source)->first();
         }
       }
 
       return view('home/index', [
-        'newsListOfToday'=> $podcastList,
+        'newsListOfToday'=> $newsListOfToday,
         'newsListOfYesterday'=> $newsListOfYesterday,
         'today'=> date('m-d'),
         'yesterday'=> date('m-d', strtotime('-1 day')),
