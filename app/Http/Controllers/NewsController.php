@@ -74,9 +74,8 @@ class NewsController extends Controller {
       }
 
       return view('home/index', [
-        'newsListOfToday'=> $newsListOfToday,
+        'newsListOfToday'=> $podcastList,
         'newsListOfYesterday'=> $newsListOfYesterday,
-        'podcastList'=> $podcastList,
         'today'=> date('m-d'),
         'yesterday'=> date('m-d', strtotime('-1 day')),
         'cat' => $cat
