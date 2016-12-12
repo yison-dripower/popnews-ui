@@ -33,6 +33,12 @@ class NewsController extends Controller {
           $sbsNotInIds[] = $v->id;
         }
       }
+      if ($cat === 'informed') {
+        $sbs = \App\Model\Source::where('frequency', '>=', 360)->get();
+        foreach($sbs as $v) {
+          $sbsNotInIds[] = $v->id;
+        }
+      }
       if ($cat === 'podcast') {
         $sbs = \App\Model\Source::whereRule(46)->get();
         foreach($sbs as $v) {
