@@ -18,8 +18,33 @@ class NewsController extends Controller {
       $today = date('Y-m-d');
       $yesterday = date('Y-m-d', strtotime('-1 day'));
       $user = $_SESSION['user']['name'];
-      $subscribes = \App\Model\Subscribe::whereUser($user)
-        ->whereStatus(0)->get();
+      if (!empty($_REQUEST) && !empty($_REQUEST['cat'])) {
+        $cat = $_REQUEST['cat'];
+      } else {
+        $cat = 'all';
+      }
+
+      $sbsNotInIds = [];
+      $sbsInIds = [];
+      if ($cat === 'less') {
+        $sbs = \App\Model\Source::where('frequency', '>', 359)->get();
+        foreach($sbs as $v) {
+          $sbsNotInIds[] = $v->id;
+        }
+      }
+      if ($cat === 'podcast') {
+        $sbs = \App\Model\Source::whereRule(46)->get();
+        foreach($sbs as $v) {
+          $sbsInIds[] = $v->id;
+        }
+      }
+
+      $query = \App\Model\Subscribe::whereUser($user)->whereStatus(0);
+      if ($cat === 'podcast') {
+        $subscribes = $query->whereIn('source', $sbsInIds)->get();
+      } else {
+        $subscribes = $query->whereNotIn('source', $sbsNotInIds)->get();
+      }
 
       $subscribeIds = [];
       foreach($subscribes as $v) {
@@ -40,7 +65,8 @@ class NewsController extends Controller {
         'newsListOfToday'=> $newsListOfToday,
         'newsListOfYesterday'=> $newsListOfYesterday,
         'today'=> date('m-d'),
-        'yesterday'=> date('m-d', strtotime('-1 day'))
+        'yesterday'=> date('m-d', strtotime('-1 day')),
+        'cat' => $cat
       ]);
    }
 
@@ -162,6 +188,7 @@ class NewsController extends Controller {
      switch($mode) {
        case self::SITE_36KR :
          $data = $this->get36krDate();
+         break;
        case self::TWITTER :
          $selectors = [
            'url'=> self::TWITTER_DOMAIN.$_GET['suffix'],
@@ -199,9 +226,9 @@ class NewsController extends Controller {
    }
 
    private function getWithPHPQuery($selectors) {
-     require('phpQuery/phpQuery.php');
-     $content = file_get_contents($selectors['url']);
+     $content = file_get_contents('http://baidu.com');
      $doc = phpQuery::newDocumentHTML($content);
+     exit;
      phpQuery::selectDocument($doc);
      $renders = [];
      $items = pq($selectors['item']);

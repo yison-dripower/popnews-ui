@@ -32,8 +32,8 @@ require_once(dirname(__FILE__).'/phpQuery/compat/mbstring.php');
  */
 abstract class phpQuery {
 	/**
-	 * XXX: Workaround for mbstring problems 
-	 * 
+	 * XXX: Workaround for mbstring problems
+	 *
 	 * @var bool
 	 */
 	public static $mbstringSupport = true;

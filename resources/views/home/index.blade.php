@@ -17,9 +17,9 @@
 </div>
 <div id="news-list">
   <div class="filters tabs fn-clear">
-    <a class="selected">所有</a>
-    <a>特别关注</a>
-    <a>收藏</a>
+    <a @if($cat == 'all')class="selected"@endif href="/home">所有</a>
+    <a @if($cat == 'less')class="selected"@endif href="/home?cat=less">精简模式</a>
+    <a @if($cat == 'podcast')class="selected"@endif href="/home?cat=podcast">播客</a>
     <a class="fn-right plus" href="/subscribe/list">+</a>
   </div>
   <div class="list-hd">

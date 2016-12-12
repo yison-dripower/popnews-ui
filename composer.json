@@ -17,10 +17,12 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "app/Http/Controllers/phpQuery"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "App\\Http\\Controllers\\": "app/Http/Controllers/phpQuery/"
         }
     },
     "autoload-dev": {
