@@ -65,9 +65,8 @@ class NewsController extends Controller {
         }
         $podcastList = [];
       } else {
-        $newsListOfToday = [];
         $newsListOfYesterday = [];
-        $newsListOfToday = \App\Model\News::whereIn('source', $subscribeIds)->orderBy('id','desc')->limit(0)->offset(20)->get();
+        $newsListOfToday = \App\Model\News::whereIn('source', $subscribeIds)->orderBy('id','desc')->take(20)->get();
         foreach($newsListOfToday as &$v) {
           $v->source = \App\Model\Source::whereId($v->source)->first();
         }
