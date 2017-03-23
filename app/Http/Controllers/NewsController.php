@@ -226,6 +226,7 @@ class NewsController extends Controller {
    }
 
    function scalaNews() {
+     header("Access-Control-Allow-Origin: *");
      $sbs = \App\Model\Source::where('special_type', 1)
        ->get();
      $sbsInIds = [];
