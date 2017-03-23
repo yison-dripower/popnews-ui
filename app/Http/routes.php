@@ -52,6 +52,10 @@ Route::get('special-site', [
   'as' => 'special-site', 'uses' => 'NewsController@specialSite'
 ]);
 
+Route::get('subscribe/scala-news', [
+  'as' => 'scala-news', 'uses' => 'NewsController@scalaNews'
+]);
+
 Route::post('subscribe/test', [
   'as' => 'subscribe-test', 'uses' => 'NewsController@subscribeTest'
 ]);

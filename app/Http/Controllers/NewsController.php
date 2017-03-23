@@ -168,6 +168,7 @@ class NewsController extends Controller {
        $source->description = $data['description'];
      }
      $source->url = $data['url'];
+     $source->special_type = $data['specialType'];
      $source->frequency = $data['frequency'];
      $source->rule = $ruleId;
      $source->avatar = $data['avatar'];
@@ -221,6 +222,17 @@ class NewsController extends Controller {
      }
      return view('home/special', [
        'renders'=> $data
+     ]);
+   }
+
+   function scalaNews() {
+     $list = \App\Model\News::where('special_type', 1)
+        ->where('status', 0)
+        ->orderBy('id','desc')
+        ->take(300)
+        ->get();
+     echo json_encode([
+      'results' => $list
      ]);
    }
 

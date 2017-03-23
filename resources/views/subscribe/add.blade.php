@@ -55,6 +55,17 @@
     <li class="fn-clear">
       <div class="fn-left group-field">
         <div class="field-wrap">
+          <select name="special_type">
+            <option value="0">无</option>
+            <option value="1">ScalaNews</option>>
+          </select>
+        </div>
+      </div>
+      <i>专题：</i>
+    </li>
+    <li class="fn-clear">
+      <div class="fn-left group-field">
+        <div class="field-wrap">
           <input type="radio" name="frequency" value="10" /> 10分钟
           <input type="radio" name="frequency" value="30" /> 30分钟
           <input type="radio" name="frequency" value="60" /> 1小时
@@ -219,6 +230,7 @@ var formatParams = function() {
   var url = $.trim(form.find('[name=url]').val());
   var frequency = form.find('[name=frequency]:checked').val();
   var mode = $('.mode-select').is(':visible') ? 'select' : 'add';
+  var specialType = form.find('[name=special_type]').val();
   return {
     name: name,
     description: description,
