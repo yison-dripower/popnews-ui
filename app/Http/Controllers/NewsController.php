@@ -243,7 +243,7 @@ class NewsController extends Controller {
       foreach($list as &$l) {
         foreach($sbs as $sb) {
           if ($sb->id == intval($l['source'])) {
-            $l['source'] = $sb;
+            $l['source'] = $sb->toArray();
           }
         }
       }
