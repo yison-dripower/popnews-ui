@@ -21,7 +21,7 @@
     <a @if($cat == 'informed')class="selected"@endif href="/home?cat=informed">快讯</a>
     <a @if($cat == 'less')class="selected"@endif href="/home?cat=less">精简模式</a>
     <a @if($cat == 'podcast')class="selected"@endif href="/home?cat=podcast">播客</a>
-    <a href="https://gitter.im/PopNews/Lobby">动态</a>
+    <a href="https://mobile.twitter.com/yisonking/lists/coding">Twitter</a>
     <a class="fn-right plus" href="/subscribe/list">+</a>
   </div>
     @if ($cat !== 'podcast')

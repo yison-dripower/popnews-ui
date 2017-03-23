@@ -78,6 +78,7 @@ h1 a:hover {
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd;
+  word-break: break-all;
 }
 #news-list li:hover {
   background-color: #eee;

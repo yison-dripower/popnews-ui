@@ -40,7 +40,7 @@ class NewsController extends Controller {
         }
       }
       if ($cat === 'podcast') {
-        $sbs = \App\Model\Source::whereRule(46)->get();
+        $sbs = \App\Model\Source::whereIn('rule', [45, 46, 53])->get();
         foreach($sbs as $v) {
           $sbsInIds[] = $v->id;
         }
@@ -72,7 +72,7 @@ class NewsController extends Controller {
         $podcastList = [];
       } else {
         $newsListOfYesterday = [];
-        $newsListOfToday = \App\Model\News::whereIn('source', $subscribeIds)->orderBy('id','desc')->take(20)->get();
+        $newsListOfToday = \App\Model\News::whereIn('source', $subscribeIds)->orderBy('id','desc')->take(50)->get();
         foreach($newsListOfToday as &$v) {
           $v->source = \App\Model\Source::whereId($v->source)->first();
         }
