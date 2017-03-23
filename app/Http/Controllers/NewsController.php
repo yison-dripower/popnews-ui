@@ -226,7 +226,13 @@ class NewsController extends Controller {
    }
 
    function scalaNews() {
-     $list = \App\Model\News::where('special_type', 1)
+     $sbs = \App\Model\Source::where('special_type', 1)
+       ->get();
+     $sbsInIds = [];
+     foreach($sbs as $v) {
+       $sbsInIds[] = $v->id;
+     }
+     $list = \App\Model\News::whereIn('source', $sbsInIds)
         ->where('status', 0)
         ->orderBy('id','desc')
         ->take(300)
