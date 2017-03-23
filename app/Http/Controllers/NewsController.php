@@ -238,6 +238,16 @@ class NewsController extends Controller {
         ->orderBy('id','desc')
         ->take(300)
         ->get();
+     if (!empty($list)) {
+      $list = $list->toArray();
+      foreach($list as &$l) {
+        foreach($sbs as $sb) {
+          if ($sb->id == $l['source']) {
+            $l['source'] = $sb;
+          }
+        }
+      }
+     }
      echo json_encode([
       'results' => $list
      ]);
