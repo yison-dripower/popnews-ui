@@ -21,6 +21,7 @@ phantom.create(['--ignore-ssl-errors=yes', '--load-images=no'])
     return instance.createPage()
   })
   .then(page => {
+    page.setting('userAgent', USER_AGENT)
     page.open(url).then(function (status) {
       var rule = {
         news: news,
