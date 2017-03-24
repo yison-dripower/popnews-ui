@@ -238,7 +238,8 @@ var formatParams = function() {
     url: url,
     frequency: frequency,
     mode: mode,
-    template: formatTemplate(mode)
+    template: formatTemplate(mode),
+    specialType: specialType
   };
 }
 var formatTemplate = function(mode) {
