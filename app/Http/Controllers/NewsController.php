@@ -40,7 +40,7 @@ class NewsController extends Controller {
         }
       }
       if ($cat === 'podcast') {
-        $sbs = \App\Model\Source::whereIn('rule', [45, 46, 53])->get();
+        $sbs = \App\Model\Source::whereIn('rule', [45, 46, 53, 59])->get();
         foreach($sbs as $v) {
           $sbsInIds[] = $v->id;
         }
