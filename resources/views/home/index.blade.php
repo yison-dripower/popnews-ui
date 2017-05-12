@@ -18,10 +18,10 @@
 <div id="news-list">
   <div class="filters tabs fn-clear">
     <a @if($cat == 'all')class="selected"@endif href="/home">所有</a>
-    <a @if($cat == 'informed')class="selected"@endif href="/home?cat=informed">快讯</a>
     <a @if($cat == 'less')class="selected"@endif href="/home?cat=less">精简模式</a>
     <a @if($cat == 'podcast')class="selected"@endif href="/home?cat=podcast">播客</a>
-    <a href="https://mobile.twitter.com/yisonking/lists/coding">Twitter</a>
+    <a href="http://news.scala.cool/">Scala</a>
+    <a href="http://fanfou.com/">饭否</a>
     <a class="fn-right plus" href="/subscribe/list">+</a>
   </div>
     @if ($cat !== 'podcast')
